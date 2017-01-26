@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.fjnucse.linccy.wetherclockhelper.base.BaseActivity;
 import com.fjnucse.linccy.wetherclockhelper.base.Drawer;
 import com.fjnucse.linccy.wetherclockhelper.bean.IdBean;
@@ -30,6 +31,7 @@ public class MainActivity extends BaseActivity
     @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
 
+    private SimpleDraweeView mAvatar;
     private FragmentTransaction mFragmentTransaction;
 
     @Override
@@ -45,7 +47,8 @@ public class MainActivity extends BaseActivity
     @Override
     protected void setContentView() {
         navView.setNavigationItemSelectedListener(this);
-
+        mAvatar = (SimpleDraweeView) navView.getHeaderView(0).findViewById(R.id.imageView);
+        mAvatar.setImageURI("https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=758b33e74e10b912a0c1f1fef3fcfcb5/8326cffc1e178a82019b0bfcff03738da877e8c3.jpg");
     }
 
     @Override

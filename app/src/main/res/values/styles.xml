@@ -17,4 +17,12 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/DeepPurple</item>
+        <item name="colorPrimaryDark">@color/DeepPurple900</item>
+        <item name="colorAccent">@color/Orange</item>
+    </style>
+
+    <style name="NoActionBarAppTheme" parent="AppTheme.Base"></style>
 </resources>
