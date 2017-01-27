@@ -11,18 +11,22 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.fjnucse.linccy.wetherclockhelper.base.BaseActivity;
+import com.fjnucse.linccy.wetherclockhelper.base.BaseFragmentActivity;
 import com.fjnucse.linccy.wetherclockhelper.base.Drawer;
 import com.fjnucse.linccy.wetherclockhelper.bean.IdBean;
+import com.fjnucse.linccy.wetherclockhelper.fragment.WeatherFragment;
 import com.fjnucse.linccy.wetherclockhelper.info.IdInput;
+import com.fjnucse.linccy.wetherclockhelper.utils.ToastUtil;
 
 import butterknife.BindView;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class MainActivity extends BaseActivity
+public class MainActivity extends BaseFragmentActivity
         implements NavigationView.OnNavigationItemSelectedListener, Drawer {
+    private long mOnBackDownTime;
+    private static final long ON_BACK_EXIT_TIME = 2000;
 
     @BindView(R.id.container)
     FrameLayout container;
@@ -32,7 +36,6 @@ public class MainActivity extends BaseActivity
     DrawerLayout drawer;
 
     private SimpleDraweeView mAvatar;
-    private FragmentTransaction mFragmentTransaction;
 
     @Override
     protected int getLayoutId() {
@@ -49,14 +52,17 @@ public class MainActivity extends BaseActivity
         navView.setNavigationItemSelectedListener(this);
         mAvatar = (SimpleDraweeView) navView.getHeaderView(0).findViewById(R.id.imageView);
         mAvatar.setImageURI("https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=758b33e74e10b912a0c1f1fef3fcfcb5/8326cffc1e178a82019b0bfcff03738da877e8c3.jpg");
+        WeatherFragment weatherFragment = new WeatherFragment();
+        replaceFragment(R.id.container, weatherFragment);
+        getSupportFragmentManager().beginTransaction().show(weatherFragment).commit();
     }
 
     @Override
     protected void initData() {
-        replaceFragment(R.id.container,new ClockFragment());
+        replaceFragment(R.id.container, new ClockFragment());
         IdInput input = new IdInput();
         input.id = "350721199311290510";
-        WebService.get().getCommunicateById("7ee4db22ac82d07de07019c5c7bade8f",input.toMap())
+        WebService.get().getCommunicateById("7ee4db22ac82d07de07019c5c7bade8f", input.toMap())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<IdBean>() {
@@ -82,7 +88,22 @@ public class MainActivity extends BaseActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (System.currentTimeMillis() - mOnBackDownTime < ON_BACK_EXIT_TIME) {
+                super.onBackPressed();
+            } else {
+                ToastUtil.showToast(getApplicationContext(), R.string.press_one_again_to_exist);
+                mOnBackDownTime = System.currentTimeMillis();
+            }
+        }
+    }
+
+    public void showDrawer() {
+        if (drawer != null) {
+            if (!drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.openDrawer(GravityCompat.START);
+            } else {
+                drawer.closeDrawer(GravityCompat.START);
+            }
         }
     }
 

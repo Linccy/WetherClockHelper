@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_snow_night"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/title_weather"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <ImageButton
+            android:id="@+id/menu_show_nav"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/translate"
+            android:padding="8dp"
+            android:scaleType="centerInside"
+            android:src="@mipmap/ic_show_nav" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:lines="1"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_city_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="顺昌"
+                    android:textColor="@color/titleWhite"
+                    android:textSize="@dimen/text_size_24" />
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/space_2"
+                    android:layout_toRightOf="@+id/tv_city_name"
+                    android:src="@mipmap/ic_send_location" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/space_4"
+                android:text="2017年1月27日发布"
+                android:textColor="@color/titleGray" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/share_weather"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@color/translate"
+            android:padding="8dp"
+            android:scaleType="center"
+            android:src="@drawable/common_title_share" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:padding="@dimen/space_8"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="72dp">
+
+                <TextView
+                    android:id="@+id/tv_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7"
+                    android:textColor="@color/White"
+                    android:textSize="72dp" />
+
+                <TextView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_toRightOf="@+id/tv_temperature"
+                    android:background="@drawable/circle_storke_white" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/tv_temperature"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/textView_Color_Size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:text="晴朗"
+                        android:textSize="@dimen/text_size_12" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@mipmap/btn_main_correction_pressed" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl"
+                android:layout_width="0dp"
+                android:layout_height="72dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_voice"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/animation_voice" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/textView_Color_Size"
+                    android:text="24小时预报"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

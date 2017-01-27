@@ -25,4 +25,10 @@
     </style>
 
     <style name="NoActionBarAppTheme" parent="AppTheme.Base"></style>
+
+    <style name="textView_Color_Size">
+        <item name="android:textColor">@color/White</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_margin">@dimen/space_2</item>
+    </style>
 </resources>

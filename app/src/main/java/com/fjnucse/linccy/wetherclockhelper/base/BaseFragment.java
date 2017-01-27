@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseFragment extends Fragment {
     protected Toolbar mToolbar;
-    protected BaseActivity mActivity;
+    protected BaseFragmentActivity mActivity;
 
     protected abstract void initView(View view, Bundle savedInstanceState);
 
@@ -29,14 +29,14 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int getLayoutId();
 
     //获取宿主Activity
-    protected BaseActivity getHoldingActivity() {
+    protected BaseFragmentActivity getHoldingActivity() {
         return mActivity;
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.mActivity = (BaseActivity) activity;
+        this.mActivity = (BaseFragmentActivity) activity;
     }
 
     @Override

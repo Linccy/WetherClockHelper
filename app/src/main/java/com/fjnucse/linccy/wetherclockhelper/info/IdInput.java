@@ -10,10 +10,11 @@ import java.util.Objects;
 
 public class IdInput {
     public String id;
-    public Map toMap(){
-        Map<String,Object> map = new HashMap<>();
-        map.put("id",id);
-        map.put("apikey","7ee4db22ac82d07de07019c5c7bade8f");
+
+    public Map<String, String> toMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("id", id);
+        map.put("apikey", "7ee4db22ac82d07de07019c5c7bade8f");
         return map;
     }
 }

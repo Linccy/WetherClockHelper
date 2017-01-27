@@ -41,7 +41,6 @@ android {
 //    }
 //}
 
-
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -59,7 +58,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.4'
     compile 'com.squareup.okhttp:okhttp:2.0.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-
     /*fresco*/
     compile 'com.facebook.fresco:fresco:0.12.0'
     // 在 API < 14 上的机器支持 WebP 时，需要添加
@@ -69,10 +67,12 @@ dependencies {
     // 支持 WebP （静态图+动图）
     compile 'com.facebook.fresco:animated-webp:0.12.0'
     compile 'com.facebook.fresco:webpsupport:0.12.0'
-
     /*rotrofit*/
     compile 'com.squareup.retrofit2:retrofit:+'
     compile 'com.squareup.retrofit2:converter-gson:+'
     compile 'com.squareup.retrofit2:adapter-rxjava:+'
     compile 'com.google.code.gson:gson:+'
+    //    compile 'com.github.lecho:hellocharts-library:1.5.8'
+    /*引入图表库*/
+    compile project(':hellocharts-library')
 }

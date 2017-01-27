@@ -22,13 +22,11 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/NoActionBarAppTheme">
+            android:label="@string/title_activity_main2">
         </activity>
 
         <activity
-            android:name=".activity.SplashActivity"
-            android:theme="@style/NoActionBarAppTheme">
+            android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
