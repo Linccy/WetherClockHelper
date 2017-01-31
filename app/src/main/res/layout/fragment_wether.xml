@@ -149,7 +149,8 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -159,7 +160,10 @@
                     style="@style/textView_Color_Size"
                     android:text="24小时预报"/>
             </RelativeLayout>
-
+            <lecho.lib.hellocharts.view.LineChartView
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

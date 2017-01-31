@@ -1,7 +1,6 @@
 package com.fjnucse.linccy.wetherclockhelper;
 
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,6 +13,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.fjnucse.linccy.wetherclockhelper.base.BaseFragmentActivity;
 import com.fjnucse.linccy.wetherclockhelper.base.Drawer;
 import com.fjnucse.linccy.wetherclockhelper.bean.IdBean;
+import com.fjnucse.linccy.wetherclockhelper.fragment.ClockFragment;
 import com.fjnucse.linccy.wetherclockhelper.fragment.WeatherFragment;
 import com.fjnucse.linccy.wetherclockhelper.info.IdInput;
 import com.fjnucse.linccy.wetherclockhelper.utils.ToastUtil;
