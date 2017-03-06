@@ -23,21 +23,21 @@ import butterknife.BindView;
  */
 public class ClockFragment extends BaseFragment {
 
-    @BindView(R.id.content_main2)
-    RelativeLayout contentMain2;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
+//    @BindView(R.id.content_main2)
+//    RelativeLayout contentMain2;
+//    @BindView(R.id.fab)
+//    FloatingActionButton fab;
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
     }
 
     @Override

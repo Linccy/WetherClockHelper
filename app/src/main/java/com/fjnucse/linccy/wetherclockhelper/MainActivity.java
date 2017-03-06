@@ -11,14 +11,17 @@ import android.widget.FrameLayout;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.fjnucse.linccy.wetherclockhelper.base.BaseFragmentActivity;
+import com.fjnucse.linccy.wetherclockhelper.base.BaseResponse;
 import com.fjnucse.linccy.wetherclockhelper.base.Drawer;
 import com.fjnucse.linccy.wetherclockhelper.bean.IdBean;
 import com.fjnucse.linccy.wetherclockhelper.fragment.ClockFragment;
 import com.fjnucse.linccy.wetherclockhelper.fragment.WeatherFragment;
 import com.fjnucse.linccy.wetherclockhelper.info.IdInput;
+import com.fjnucse.linccy.wetherclockhelper.info.LoginInput;
 import com.fjnucse.linccy.wetherclockhelper.utils.ToastUtil;
 
 import butterknife.BindView;
+import retrofit2.HttpException;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -53,19 +56,41 @@ public class MainActivity extends BaseFragmentActivity
         mAvatar = (SimpleDraweeView) navView.getHeaderView(0).findViewById(R.id.imageView);
         mAvatar.setImageURI("https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=758b33e74e10b912a0c1f1fef3fcfcb5/8326cffc1e178a82019b0bfcff03738da877e8c3.jpg");
         WeatherFragment weatherFragment = new WeatherFragment();
-        replaceFragment(R.id.container, weatherFragment);
-        getSupportFragmentManager().beginTransaction().show(weatherFragment).commit();
+//        replaceFragment(R.id.container, weatherFragment);
+//        getSupportFragmentManager().beginTransaction().show(weatherFragment).commit();
     }
 
     @Override
     protected void initData() {
         replaceFragment(R.id.container, new ClockFragment());
-        IdInput input = new IdInput();
-        input.id = "350721199311290510";
-        WebService.get().getCommunicateById("7ee4db22ac82d07de07019c5c7bade8f", input.toMap())
+//        IdInput input = new IdInput();
+//        input.id = "350721199311290510";
+//        WebService.get().getCommunicateById("7ee4db22ac82d07de07019c5c7bade8f", input.toMap())
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Subscriber<IdBean>() {
+//                    @Override
+//                    public void onCompleted() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                    @Override
+//                    public void onNext(IdBean idBean) {
+//                        int id = idBean.getErrNum();
+//                    }
+//                });
+        LoginInput input = new LoginInput();
+        input.loginName = "admin";
+        input.pass = "e10adc3949ba59abbe56e057f20f883e";
+        WebService.get().userLogin(input.toMap())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<IdBean>() {
+                .subscribe(new Subscriber<BaseResponse>() {
                     @Override
                     public void onCompleted() {
 
@@ -73,12 +98,12 @@ public class MainActivity extends BaseFragmentActivity
 
                     @Override
                     public void onError(Throwable e) {
-                        e.printStackTrace();
+                        ToastUtil.showToast(getApplicationContext(),"失败了"+((e instanceof HttpException)?((HttpException)e).code():""));
                     }
 
                     @Override
-                    public void onNext(IdBean idBean) {
-                        int id = idBean.getErrNum();
+                    public void onNext(BaseResponse baseResponse) {
+                        String token = baseResponse.getToken();
                     }
                 });
     }

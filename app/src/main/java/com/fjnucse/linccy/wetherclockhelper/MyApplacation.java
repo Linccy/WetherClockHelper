@@ -13,6 +13,6 @@ public class MyApplacation extends Application {
     public void onCreate() {
         super.onCreate();
         Fresco.initialize(this);
-        WebService.init();
+        WebService.init(getApplicationContext());
     }
 }

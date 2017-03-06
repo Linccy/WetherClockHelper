@@ -75,4 +75,7 @@ dependencies {
     //    compile 'com.github.lecho:hellocharts-library:1.5.8'
     /*引入图表库*/
     compile project(':hellocharts-library')
+
+    //日历
+    compile 'com.prolificinteractive:material-calendarview:1.4.2'
 }
